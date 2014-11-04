@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>Fires on the University of Illinois Campus</title>
+    <!-- Jquery -->
+    <script src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+    <!-- Bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css">
+    <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js"></script>
+    <!-- Leaflet JS -->
+    <link rel="stylesheet" href="http://cdn.leafletjs.com/leaflet-0.7.3/leaflet.css" />
+    <script src="//cdn.leafletjs.com/leaflet-0.7.3/leaflet.js"></script>
+    <!-- heatmap -->
+    <script src="js/leaflet-heatmap.js"></script>
+    <script src="js/heatmap.min.js"></script>
+    <style>
+        #title { background-color: red; color: #FFF; }
+        #title h2 { margin: 0; padding: 10px; }
+        .heatmap { width: 800px; height: 600px; display: inline-block; float: left; }
+        #sidebar { float: left; display: inline-block; padding: 5px 15px; }
+        #infobar { width: 300px; height: 600px; }
+    </style>
+</head>
+<body>
+    <div id="title">
+        <h2>Fire incidents on campus</h2>
+    </div>
+    <div class="heatmap" id="map-canvas"></div>
+    <div id="sidebar">
+        <h4 style="border-bottom: 1px solid #AAA; padding-bottom: 5px;">Description of Fires</h4>
+        <div id="infobar"></div>
+    </div>
+</body>
+<script src="json/data.json"></script>
+<script src="json/fire_data.json"></script>
+<script>
+    window.onload = function() {
+
+        // base tiles from mapbox
+        var baseLayer = L.tileLayer(
+                'http://{s}.tiles.mapbox.com/v3/actongorton.k4j5opc1/{z}/{x}/{y}.png', {
+                    attribution: 'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, <a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="http://mapbox.com">Mapbox</a>',
+                    maxZoom: 18
+                }
+        );
+
+        // heatmap configuration
+        var cfg = {
+            "radius": 20,
+            "maxOpacity": .9,
+            "minOpacity": .18,
+            "useLocalExtrema": true,
+            latField: 'lat',
+            lngField: 'lon',
+            valueField: 'value',
+            blur: .5
+        };
+
+        // association the configuration with the heatmap
+        var heatmapLayer = new HeatmapOverlay(cfg);
+
+
+        // add additional fire data to map
+        var place_data = [];
+
+        for (x in fire_data.data){
+            var info = [];
+
+            for (xx in data){
+
+                if (data[xx]['Address'] == fire_data.data[x]["street"]){
+
+                    // create an object
+                    var event = {
+                        eventDate: data[xx].Date,
+                        eventTime:  data[xx].Time,
+                        eventAddress: data[xx].Address,
+                        eventCity: data[xx].City,
+                        eventBuilding: data[xx].Building,
+                        eventNature: data[xx].Nature,
+                        eventTypeCode: data[xx].TypeCode_CUCA
+                    };
+
+                    info.push(event)
+                }
+            }
+
+            place_data.push({
+                latitude: fire_data.data[x]['lat'],
+                longitude: fire_data.data[x]['lon'],
+                record: info
+            })
+
+        }
+
+        // load the map
+        var map = new L.Map('map-canvas', {
+            center: new L.LatLng(40.101852, -88.226953),
+            zoom: 14,
+            layers: [baseLayer, heatmapLayer]
+        });
+
+        // points of interest
+        for (abc in place_data){
+            L.circleMarker([place_data[abc].latitude, place_data[abc].longitude], {
+                color: false,
+                fillColor: false,
+                fillOpacity: .01,
+                radius: 20,
+                property: place_data[abc].record
+            })
+                .on('mouseover', function(){
+                    var infobox = "";
+                    for (u in this.options.property){
+                        infobox = infobox +
+                            "<b><span class='glyphicon glyphicon-fire' style='color: red; margin-right: 5px;'></span>" +
+                                this.options.property[u].eventBuilding + "</b> (" +
+                                this.options.property[u].eventDate + ")<br><span style='font-size: 11px;'>" +
+                                this.options.property[u].eventNature + "<br>" +
+                                this.options.property[u].eventAddress + ", " + this.options.property[u].eventCity +
+                            "</span><br><br>"
+                    }
+                    $('#infobar').html(infobox)
+            }).addTo(map);
+        }
+
+        // fire!!!
+        heatmapLayer.setData(fire_data);
+    }
+</script>
+</html>

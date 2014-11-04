@@ -1,0 +1,502 @@
+var fire_data = {
+	max: 6,
+	data: [
+	{
+		"street":"1001 W. Pennsylvania",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1006485",
+		"lon":"-88.2203904"
+	},
+	{
+		"street":"1002 College",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.099467",
+		"lon":"-88.2211881"
+	},
+	{
+		"street":"1005 College",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.0992729",
+		"lon":"-88.2214598"
+	},
+	{
+		"street":"1005 S Lincoln",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1040786",
+		"lon":"-88.2192228"
+	},
+	{
+		"street":"1005 W. Gregory",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1041332",
+		"lon":"-88.2209428"
+	},
+	{
+		"street":"1008 W. Hazelwood",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.092007",
+		"lon":"-88.2224066"
+	},
+	{
+		"street":"101 Gregory Dr",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.104071",
+		"lon":"-88.2402523"
+	},
+	{
+		"street":"1010 W Green",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.1112948",
+		"lon":"-88.221674"
+	},
+	{
+		"street":"1010 W. Illinois St",
+		"city":"Urbana",
+		"value":"5",
+		"lat":"40.1090692",
+		"lon":"-88.2208839"
+	},
+	{
+		"street":"1010 W. Nevada",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1060063",
+		"lon":"-88.2213733"
+	},
+	{
+		"street":"1011 W. University Ave",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.116138",
+		"lon":"-88.21977"
+	},
+	{
+		"street":"105 S. Goodwin",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1115409",
+		"lon":"-88.224247"
+	},
+	{
+		"street":"1101 W. Springfield",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.1127863",
+		"lon":"-88.2225044"
+	},
+	{
+		"street":"1102 S. Goodwin",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.102654",
+		"lon":"-88.223798"
+	},
+	{
+		"street":"1102 W. Gregory",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.104509",
+		"lon":"-88.221953"
+	},
+	{
+		"street":"1107 W. Green St",
+		"city":"Urbana",
+		"value":"3",
+		"lat":"40.110157",
+		"lon":"-88.2233963"
+	},
+	{
+		"street":"1109 W. Green",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.110454",
+		"lon":"-88.2217203"
+	},
+	{
+		"street":"1114 W Nevada",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1065954",
+		"lon":"-88.2228678"
+	},
+	{
+		"street":"1115 W. Nevada",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1059473",
+		"lon":"-88.2225249"
+	},
+	{
+		"street":"1117 S. Oak St",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1047164",
+		"lon":"-88.2419414"
+	},
+	{
+		"street":"1201 W Gregory",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.1038046",
+		"lon":"-88.2238454"
+	},
+	{
+		"street":"1206 S. Sixth",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1035102",
+		"lon":"-88.2300657"
+	},
+	{
+		"street":"1207 W Gregory Dr",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1040174",
+		"lon":"-88.2247062"
+	},
+	{
+		"street":"1208 S. First St.",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1038729",
+		"lon":"-88.238607"
+	},
+	{
+		"street":"1208 W. Peabody",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1018364",
+		"lon":"-88.2252631"
+	},
+	{
+		"street":"1208 W. Pennsyvania",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1006126",
+		"lon":"-88.2244403"
+	},
+	{
+		"street":"1213 S First",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1028112",
+		"lon":"-88.2386346"
+	},
+	{
+		"street":"1301 W. Green St",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1104844",
+		"lon":"-88.2255969"
+	},
+	{
+		"street":"1301 W. Gregory St",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1041672",
+		"lon":"-88.2238616"
+	},
+	{
+		"street":"1303 W. Pennsylvania",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1005839",
+		"lon":"-88.2234517"
+	},
+	{
+		"street":"1304 W. Green St",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1107574",
+		"lon":"-88.2258743"
+	},
+	{
+		"street":"1305 S Oak St",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.0981804",
+		"lon":"-88.2414674"
+	},
+	{
+		"street":"1308 W Green",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1108517",
+		"lon":"-88.226974"
+	},
+	{
+		"street":"1310 S. Sixth",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1019565",
+		"lon":"-88.2296348"
+	},
+	{
+		"street":"1331 W Springfield",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1127318",
+		"lon":"-88.2261311"
+	},
+	{
+		"street":"1401 W. Green St",
+		"city":"Urbana",
+		"value":"6",
+		"lat":"40.1097387",
+		"lon":"-88.2273147"
+	},
+	{
+		"street":"1402 W. Gregory",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1047959",
+		"lon":"-88.2272315"
+	},
+	{
+		"street":"1408 W. Gregory",
+		"city":"Urbana",
+		"value":"3",
+		"lat":"40.1047301",
+		"lon":"-88.2287981"
+	},
+	{
+		"street":"1611 S. Oak St",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.097828",
+		"lon":"-88.2414645"
+	},
+	{
+		"street":"1811 S Orchard",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0963028",
+		"lon":"-88.2142632"
+	},
+	{
+		"street":"1930 S. Orchard St",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.094636",
+		"lon":"-88.2120072"
+	},
+	{
+		"street":"201 N. Goodwin",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1138245",
+		"lon":"-88.2240759"
+	},
+	{
+		"street":"2017 S. Orchard",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0927489",
+		"lon":"-88.2115502"
+	},
+	{
+		"street":"2040 S. Orchard St",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0922308",
+		"lon":"-88.2115347"
+	},
+	{
+		"street":"2051 S. Orchard",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0919456",
+		"lon":"-88.2115441"
+	},
+	{
+		"street":"2107 W. Hazelwood",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0902473",
+		"lon":"-88.2124975"
+	},
+	{
+		"street":"2217 S. First",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.0859277",
+		"lon":"-88.2393795"
+	},
+	{
+		"street":"2301 S. Lincoln",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0884483",
+		"lon":"-88.2200365"
+	},
+	{
+		"street":"2307 S First",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.084507",
+		"lon":"-88.2388427"
+	},
+	{
+		"street":"300 N. Goodwin",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.11481",
+		"lon":"-88.2235533"
+	},
+	{
+		"street":"300 S. Goodwin Ave",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1101424",
+		"lon":"-88.2237624"
+	},
+	{
+		"street":"500 S. Goodwin",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.108013",
+		"lon":"-88.222747"
+	},
+	{
+		"street":"501 E. Daniels",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1109993",
+		"lon":"-88.2218677"
+	},
+	{
+		"street":"505 E. Armory",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1046588",
+		"lon":"-88.2328279"
+	},
+	{
+		"street":"506 S. Mathews",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1085616",
+		"lon":"-88.2251571"
+	},
+	{
+		"street":"600 S. Mathews",
+		"city":"Urbana",
+		"value":"4",
+		"lat":"40.1078402",
+		"lon":"-88.2247521"
+	},
+	{
+		"street":"603 E. Daniel",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1076581",
+		"lon":"-88.2299484"
+	},
+	{
+		"street":"607 S. Mathews",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.107192",
+		"lon":"-88.2260299"
+	},
+	{
+		"street":"608 E. Larado Taft",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1033565",
+		"lon":"-88.2290848"
+	},
+	{
+		"street":"610 E John St",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1093563",
+		"lon":"-88.2300217"
+	},
+	{
+		"street":"709 S. Mathews",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1059876",
+		"lon":"-88.227196"
+	},
+	{
+		"street":"809 S. Oak St",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1045107",
+		"lon":"-88.2415354"
+	},
+	{
+		"street":"901 College Ct",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.0992848",
+		"lon":"-88.2202242"
+	},
+	{
+		"street":"901 W Pennsylvania",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1006132",
+		"lon":"-88.2191444"
+	},
+	{
+		"street":"902 College Ct",
+		"city":"Urbana",
+		"value":"2",
+		"lat":"40.099987",
+		"lon":"-88.220301"
+	},
+	{
+		"street":"906 W College Ct",
+		"city":"Urbana",
+		"value":"3",
+		"lat":"40.0997009",
+		"lon":"-88.2209361"
+	},
+	{
+		"street":"906 W. Pennsylvania",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.1006314",
+		"lon":"-88.2193099"
+	},
+	{
+		"street":"909 S. Fifth",
+		"city":"Champaign",
+		"value":"2",
+		"lat":"40.1071047",
+		"lon":"-88.2324603"
+	},
+	{
+		"street":"919 W. Illinois",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.108876",
+		"lon":"-88.221288"
+	},
+	{
+		"street":"Approx. Curtis Rd/Race St",
+		"city":"Urbana",
+		"value":"1",
+		"lat":"40.0838583",
+		"lon":"-88.2094233"
+	},
+	{
+		"street":"N. Wright/W Springfield",
+		"city":"Champaign",
+		"value":"1",
+		"lat":"40.1126822",
+		"lon":"-88.2290911"
+	}
+]
+}
