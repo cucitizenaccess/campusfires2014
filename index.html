@@ -18,7 +18,7 @@
         #title { background-color: red; color: #FFF; }
         #title h2 { margin: 0; padding: 10px; }
         .heatmap { width: 800px; height: 600px; display: inline-block; float: left; }
-        #sidebar { float: left; display: inline-block; padding: 5px 15px; }
+        #sidebar { position: absolute; display: inline-block; padding: 5px 15px; }
         #infobar { width: 300px; height: 600px; }
     </style>
 </head>
@@ -31,7 +31,11 @@
         <h4 style="border-bottom: 1px solid #AAA; padding-bottom: 5px;">Description of Fires</h4>
         <div id="infobar">
             <p><span class="glyphicon glyphicon-arrow-left" style="margin-right: 5px;"></span>Mouse over map to see details...</p>
+            <p>The Campus Code Compliance and Fire Safety division keeps track of all fires that occur on University of Illinois at Urbana-Champaign property.</p>
+            <p>That information is then made available to the public in the campus fire log. From February 2010 through July 2014, the log shows there were at least 105 university fires.</p>
+            <p>The heat map displays where those fires occurred.</p>
         </div>
+        <div id="infobar-bottom"></div>
     </div>
 </body>
 <script src="json/data.json"></script>
@@ -105,30 +109,37 @@
 
         // points of interest
         for (abc in place_data){
-            L.circleMarker([place_data[abc].latitude, place_data[abc].longitude], {
-                color: false,
-                fillColor: false,
-                fillOpacity: .01,
-                radius: 20,
-                property: place_data[abc].record
-            })
+        L.circleMarker([place_data[abc].latitude, place_data[abc].longitude], {
+            color: false,
+            fillColor: false,
+            fillOpacity: .01,
+            radius: 20,
+            property: place_data[abc].record
+        })
                 .on('mouseover', function(){
                     var infobox = "";
                     for (u in this.options.property){
                         infobox = infobox +
-                            "<b><span class='glyphicon glyphicon-fire' style='color: red; margin-right: 5px;'></span>" +
-                                this.options.property[u].eventBuilding + "</b> (" +
-                                this.options.property[u].eventDate + ")<br><span style='font-size: 11px;'>" +
-                                this.options.property[u].eventNature + "<br>" +
-                                this.options.property[u].eventAddress + ", " + this.options.property[u].eventCity +
-                            "</span><br><br>"
+                        "<b><span class='glyphicon glyphicon-fire' style='color: red; margin-right: 5px;'></span>" +
+                        this.options.property[u].eventBuilding + "</b> (" +
+                        this.options.property[u].eventDate + ")<br><span style='font-size: 11px;'>" +
+                        this.options.property[u].eventNature + "<br>" +
+                        this.options.property[u].eventAddress + ", " + this.options.property[u].eventCity +
+                        "</span><br><br>"
                     }
-                    $('#infobar').html(infobox)
-            }).addTo(map);
+                    $('#infobar').fadeOut('fast');
+                    $('#infobar-bottom').html(infobox);
+                })
+                .addTo(map);
         }
 
         // fire!!!
         heatmapLayer.setData(fire_data);
+
+        $('#map-canvas').mouseleave(function(){
+            $('#infobar').fadeIn('fast');
+            $('#infobar-bottom').html('')
+        })
     }
 </script>
 </html>
