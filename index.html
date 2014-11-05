@@ -18,9 +18,11 @@
         #title { background-color: red; color: #FFF; }
         #title h2 { margin: 0; padding: 10px; }
         .heatmap { width: 800px; height: 600px; display: inline-block; float: left; }
-        #sidebar { position: absolute; display: inline-block; padding: 5px 15px; }
+        #sidebar { position: absolute; display: inline-block; padding: 5px 15px; height: 600px; }
         #infobar { width: 300px; height: 600px; }
+        #infobar-bottom { line-height: 90%; }
         .leaflet-zoom-hide { z-index: -100; }
+        .credit { position: absolute; bottom: 0; padding: 0 20px; font-weight: bold; font-size: 10px; }
     </style>
 </head>
 <body>
@@ -42,6 +44,10 @@
             <p>The map displays the frequency of fires through the intensity of the colors.</p>
         </div>
         <div id="infobar-bottom"></div>
+        <div class="credit">
+            <p>Souce: University of Illinois at Urbana-Champaign</p>
+            <p>Made by A. H. Gorton</p>
+        </div>
     </div>
 </body>
 <script src="json/data.json"></script>
