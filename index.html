@@ -20,6 +20,7 @@
         .heatmap { width: 800px; height: 600px; display: inline-block; float: left; }
         #sidebar { position: absolute; display: inline-block; padding: 5px 15px; }
         #infobar { width: 300px; height: 600px; }
+        .leaflet-zoom-hide { z-index: -100; }
     </style>
 </head>
 <body>
@@ -71,9 +72,9 @@
         // associate the configuration with the heatmap
         var heatmapLayer = new HeatmapOverlay(cfg);
 
-
         // add additional fire data to map
         var place_data = [];
+
 
         for (x in fire_data.data){
             var info = [];
@@ -110,6 +111,7 @@
 
         for (abc in place_data){
             var hz = L.circleMarker([place_data[abc].latitude, place_data[abc].longitude], {
+                riseOnHover: true,
                 color: false,
                 fillColor: false,
                 fillOpacity: .01,
@@ -129,7 +131,7 @@
                         }
                         $('#infobar').fadeOut('fast');
                         $('#infobar-bottom').html(infobox);
-                    })
+                    });
 
             firePlaceHeatLayer.push(hz)
         }
@@ -163,7 +165,7 @@
             firePlaceMarkerLayer.push(hzz)
         }
 
-        var collectionHeat = L.layerGroup(firePlaceHeatLayer);
+        var collectionHeat = L.featureGroup(firePlaceHeatLayer);
         var collectionMarker = L.layerGroup(firePlaceMarkerLayer);
 
         // load the map
@@ -175,6 +177,7 @@
 
         // fire!!!
         heatmapLayer.setData(fire_data);
+
 
         // show or hide info in sidebar
         $('#map-canvas').mouseleave(function(){
@@ -194,6 +197,8 @@
                 $("button[overlay='markers']").removeClass('btn-primary');
                 map.removeLayer(collectionMarker);
                 map.addLayer(heatmapLayer);
+                // collectionHeat.setZIndex(9);
+                pane.style.zIndex = 10;
             }
         })
     }
